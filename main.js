@@ -10,7 +10,7 @@ class Game {
     this.background= new Background(this);
     this.player= new Player(this);
     this.obstacles= [];
-    this.numberOfObstacles= 2;
+    this.numberOfObstacles= 20;
     this.gravity;
     this.speed;
     this.score;
