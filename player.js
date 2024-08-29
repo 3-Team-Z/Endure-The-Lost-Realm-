@@ -12,6 +12,7 @@ class Player{
     this.collisionX;
     this.collisionY;
     this.collisionRadius;
+    this.collided;
   }
   draw(){
     this.game.ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -38,7 +39,7 @@ class Player{
     this.levitateSpeed= 5 * this.game.ratio;
     this.collisionRadius= this.width * 0.5;
     this.collisionX= this.x+  this.width*0.5;
-    
+    this.collided= false;
 
   }
   isTouchingTop(){

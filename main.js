@@ -16,6 +16,7 @@ class Game {
     this.score;
     this.gameOver;
     this.timer;
+    this.message1;
 
     this.resize(window.innerWidth, window.innerHeight);
 
@@ -36,7 +37,7 @@ class Game {
       this.player.levitate();
     });
   }
-  
+
   resize(width, height){
     this.canvas.width= width;
     this.canvas.height= height;
@@ -83,6 +84,14 @@ class Game {
   
   }
 
+  checkCollision(a, b){
+    const dx= a.collisionX - b.collisionX;
+    const dy= a.collisionY - b.collisionY;
+    const distance= Math.hypot(dx, dy);
+    const sumOfRadii= a.collisionRadius + b.collisionRadius;
+    return distance <= sumOfRadii;
+  }
+
   formatTimer(){
     return (this.timer* 0.001).toFixed(1);
   }
@@ -96,9 +105,18 @@ class Game {
     this.ctx.textAlign= 'left';
     this.ctx.fillText('Timer'+ this.formatTimer(), 10, 30);
     if(this.gameOver){
+      if(this.player.collided){
+        this.message1= "Stuck, Are we?";
+        this.message2= "Collision time"+ this.formatTimer()+ 'seconds!';
+      }else if(this.obstacles.length <=0){
+        this.message1= "Nailed it!";
+        this.message2= "Can you do it faster than"+ this.formatTimer()+ 'seconds?';
+      }
       this.ctx.textAlign= 'center';
-      this.ctx.font= '50px Bungee'
-      this.ctx.fillText('GAME OVER', this.width * .5, this.height * .5);
+      this.ctx.font= '50px'
+      this.ctx.fillText(this.message1, this.width * .5, this.height * .5-60);
+      this.ctx.fillText(this.message2, this.width * .5, this.height * .5+10);
+      this.ctx.fillText("Press R to try again!", this.width * .5, this.height * .5+60);
     }
     this.ctx.restore();
   }

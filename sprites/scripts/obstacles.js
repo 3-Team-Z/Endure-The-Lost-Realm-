@@ -10,7 +10,7 @@ class Obstacle{
     this.collisionX;
     this.collisionY;
     this.collisionRadius = this.scaledWidth*0.5;
-    this.speedY= Math.random()< 0.5? -1* this.game.ratio: 1* this.game.ratio;
+    this.speedY= Math.random()< 0.75? -3* this.game.ratio: 1* this.game.ratio;
     this.markedForDeletion= false;
   }
   update(){
@@ -28,6 +28,10 @@ class Obstacle{
         console.log(this.game.obstacles.length);
         this.game.score++;
         if(this.game.obstacles.length <= 0) this.game.gameOver= true;
+    }
+    if(this.game.checkCollision(this, this.game.player)){
+      this.game.gameOver= true;
+      this.game.player.collided= true;
     }
   }
   draw(){
