@@ -16,6 +16,7 @@ class Game {
     this.score;
     this.gameOver;
     this.timer;
+    this.message1;
 
     this.resize(window.innerWidth, window.innerHeight);
 
@@ -36,7 +37,7 @@ class Game {
       this.player.levitate();
     });
   }
-  
+
   resize(width, height){
     this.canvas.width= width;
     this.canvas.height= height;
@@ -81,6 +82,14 @@ class Game {
       this.obstacles.push(new Obstacle(this, firstX + i * obstacleSpacing));
     }
   
+  }
+
+  checkCollision(a, b){
+    const dx= a.collisionX - b.collisionX;
+    const dy= a.collisionY - b.collisionY;
+    const distance= Math.hypot(dx, dy);
+    const sumOfRadii= a.collisionRadius + b.collisionRadius;
+    return distance <= sumOfRadii;
   }
 
   formatTimer(){
