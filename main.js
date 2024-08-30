@@ -13,10 +13,13 @@ class Game {
     this.numberOfObstacles= 20;
     this.gravity;
     this.speed;
+    this.minSpeed;
+    this.maxSpeed;
     this.score;
     this.gameOver;
     this.timer;
     this.message1;
+    this.message2;
 
     this.resize(window.innerWidth, window.innerHeight);
 
@@ -29,8 +32,9 @@ class Game {
       this.player.levitate();
     });
 
-    window.addEventListener('keyup', e=> {
+    window.addEventListener('keydown', e=> {
       if (e.key === ' ' || e.key ==='ArrowUp'); this.player.levitate();
+      if (e.key === 'Shift' || e.key.toLowerCase() === 'c') this.player.startCharge();
     });
 
     this.canvas.addEventListener('touchstart', e=> {
@@ -51,6 +55,8 @@ class Game {
 
     this.gravity= .15 * this.ratio;
     this.speed= 2 * this.ratio;
+    this.minSpeed= this.speed;
+    this.maxSpeed= this.speed * 5;
     this.background.resize();
     this.player.resize();
     this.createObstacles();
@@ -117,6 +123,11 @@ class Game {
       this.ctx.fillText(this.message1, this.width * .5, this.height * .5-60);
       this.ctx.fillText(this.message2, this.width * .5, this.height * .5+10);
       this.ctx.fillText("Press R to try again!", this.width * .5, this.height * .5+60);
+    }
+    if(this.player.energy <= 20) this.ctx.fillStyle= 'red';
+    else if(this.player.energy>= this.player.maxEnergy) this.ctx.fillStyle= 'orangered';
+    for (let i= 0; i< this.player.energy; i++){
+      this.ctx.fillRect(10, this.height- 10- 2* i, 15, 15);2
     }
     this.ctx.restore();
   }
