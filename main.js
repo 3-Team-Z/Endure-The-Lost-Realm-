@@ -20,11 +20,16 @@ class Game {
     this.timer;
     this.message1;
     this.message2;
+    this.eventTimer= 0;
+    this.eventInterval= 150;
+    this.eventUpdate= false;
+    this.touchStartX;
+    this.swipeDistance= 50;
 
     this.resize(window.innerWidth, window.innerHeight);
 
     window.addEventListener('resize', e => {
-      console.log(e);
+      
       this.resize(e.currentTarget.innerWidth, e.currentTarget.innerHeight);
     });
 
@@ -39,7 +44,13 @@ class Game {
 
     this.canvas.addEventListener('touchstart', e=> {
       this.player.levitate();
+      this.touchStartX= e.changedTouches[0].pageX;
     });
+    this.canvas.addEventListener('touchmove', e=> {
+      if(e.changedTouches[0].pageX- this.touchStartX> this.swipeDistance){ 
+        this.player.startCharge();
+      }
+    })
   }
 
   resize(width, height){
@@ -70,6 +81,7 @@ class Game {
   
   render(deltaTime){
     if(!this.gameOver) this.timer+= deltaTime;
+    this.handlePeriodicEvents(deltaTime);
     this.background.update();
     this.background.draw();
     this.drawStatusText();
@@ -101,6 +113,16 @@ class Game {
   formatTimer(){
     return (this.timer* 0.001).toFixed(1);
   }
+  handlePeriodicEvents(deltaTime){
+    if (this.eventTimer < this.eventInterval){
+      this.eventTimer += deltaTime;
+      this.eventUpdate= false;
+    }else {
+      this.eventTimer= this.eventTimer% this.eventInterval;
+      this.eventUpdate= true;
+      
+    }
+  }
   drawStatusText(){
     this.ctx.save();
     // this.ctx.font = "italic small-caps bold 20px 'Courier New'";
@@ -125,9 +147,9 @@ class Game {
       this.ctx.fillText("Press R to try again!", this.width * .5, this.height * .5+60);
     }
     if(this.player.energy <= 20) this.ctx.fillStyle= 'red';
-    else if(this.player.energy>= this.player.maxEnergy) this.ctx.fillStyle= 'orangered';
+    else if(this.player.energy>= this.player.maxEnergy) this.ctx.fillStyle= 'green';
     for (let i= 0; i< this.player.energy; i++){
-      this.ctx.fillRect(10, this.height- 10- 2* i, 15, 15);2
+      this.ctx.fillRect(10, this.height- 10- this.player.barSize* i, this.player.barSize* 5, this.player.barSize);
     }
     this.ctx.restore();
   }
