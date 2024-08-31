@@ -18,13 +18,15 @@ class Player{
     this.minEnergy= 15;
     this.barSize;
     this.charging;
+    this.image= document.getElementById('Morgana');
     
   }
   draw(){
-    this.game.ctx.strokeRect(this.x, this.y, this.width, this.height);
-    this.game.ctx.beginPath();
-    this.game.ctx.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI*2);
-    this.game.ctx.stroke()
+    // this.game.ctx.strokeRect(this.x, this.y, this.width, this.height);
+    this.game.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+    // this.game.ctx.beginPath();
+    // this.game.ctx.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI*2);
+    // this.game.ctx.stroke()
 
    
   }
@@ -33,8 +35,10 @@ class Player{
     this.handleEnergy();
     this.y+= this.speedY;
     this.collisionY= this.y+ this.height*0.5;
-    if(!this.isTouchingBottom()){
+    if(!this.isTouchingBottom() && !this.charging){
       this.speedY += this.game.gravity;
+    }else {
+      this.speedY= 0;
     }
     if(this.isTouchingBottom()){
       this.y= this.game.height- this.height;
@@ -75,7 +79,7 @@ class Player{
         this.energy += 1;
       }
       if (this.charging){
-        this.energy-= 6;
+        this.energy-= 5;
         if(this.energy<= 0) {
           this.energy= 0;
           this.stopCharge();
