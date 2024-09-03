@@ -1,0 +1,32 @@
+button {
+  margin: 10px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  
+  
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+body{
+  background-image: url('./sprites/background.png');
+  background-size: cover;
+}
+
+h1{text-align: center;
+color: orange;}
+
+h2 {
+  color: red;
+  text-align: center;
+}
+
+p{
+  text-align: center;
+  color: white;
+}
