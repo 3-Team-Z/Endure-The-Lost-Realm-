@@ -10,13 +10,13 @@ class Game {
     this.background= new Background(this);
     this.player= new Player(this);
     this.obstacles= [];
-    this.numberOfObstacles= 20;
+    this.numberOfObstacles= 10;
     this.gravity;
     this.speed;
     this.minSpeed;
     this.maxSpeed;
     this.score;
-    this.gameOver;
+    this.gameOver= false;
     this.timer;
     this.message1;
     this.message2;
@@ -40,6 +40,7 @@ class Game {
     window.addEventListener('keydown', e=> {
       if (e.key === ' ' || e.key ==='ArrowUp'); this.player.levitate();
       if (e.key === 'Shift' || e.key.toLowerCase() === 'c') this.player.startCharge();
+      if (e.key === 'r' || e.key === 'R') this.restart();
     });
 
     this.canvas.addEventListener('touchstart', e=> {
@@ -153,8 +154,17 @@ class Game {
     }
     this.ctx.restore();
   }
-    
+  
+  restart (){
+    if (this.gameOver) {
+      this.resize(window.innerWidth, window.innerHeight);
+      this.gameOver= false;
+    }
+  }
 }
+
+
+
 
 window.addEventListener('load', function(){
   const canvas= document.getElementById('canvas1');
