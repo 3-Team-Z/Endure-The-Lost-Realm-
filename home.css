@@ -1,32 +1,113 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif; 
+  overflow: hidden; 
+}
+
 button {
-  margin: 10px;
-  padding: 10px;
+  margin-left: 47%;
+  padding: 15px 30px;
   background-color: #4CAF50;
   color: white;
   border: none;
   cursor: pointer;
-  
+ }
+
+.button-container {
+  text-align: center; 
+}
+
+.return-button {
+  padding: 15px 30px; 
+  font-size: 18px; 
+  border: none; 
+  border-radius: 8px; 
+  background-color: #007bff; 
+  color: white; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
   
 }
 
-button:hover {
-  background-color: #45a049;
+.return-button:hover {
+  background-color: #0056b3; 
 }
 
 body{
   background-image: url('./sprites/background.png');
   background-size: cover;
+  padding: 13px;
+  height: 100%;
 }
 
 h1{text-align: center;
-color: orange;}
+color: orange;
+padding-bottom: 11px;}
 
 h2 {
-  color: red;
+  color: brown;
   text-align: center;
+  padding-bottom: 18px
 }
 
 p{
   text-align: center;
   color: white;
+  padding: 10px;
+}
+
+ul{
+  justify-content:center ;
+  text-align: center;
+}
+
+
+.image-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 5px;
+}
+
+.wizard-item {
+  max-width: 15%; 
+  height: auto; 
+  border-radius: 8px; 
+}
+
+
+.wizard-item + .wizard-item {
+  margin-left: 8px; 
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 35vh; 
+  padding: 20px; 
+  box-sizing: border-box;
+}
+
+.instruction-list {
+  list-style-type: disc; 
+  padding-left: 20px; 
+  margin: 0;
+  text-align: left; 
+  max-width: 600px; 
+}
+
+.instruction-list li {
+  margin-bottom: 15px; 
+  color: aliceblue;
+}
+
+.instruction-list strong {
+  color: #007bff;
 }

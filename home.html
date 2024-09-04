@@ -8,27 +8,48 @@
 </head>
 <body>
   <h1>Endure The Lost Realm</h1>
-  <h2>Description</h2>
-  <p>Endure The Lost Realm is a thrilling, endless-flying adventure that takes inspiration from the classic game Flappy Bird. 
-    Players guide a charming, pixelated bird through a series of challenging obstacles in a vibrant, ever-changing sky. 
-    With simple yet addictive gameplay, the objective is to navigate between the gaps in the pipes, earn high scores, and unlock new characters.
-    Endure The Lost Realm combines fast-paced action with delightful visuals, offering endless fun and competition for players of all ages.</p>
 
-    <h2>How To Play</h2>
-      <p>To play Endure The Lost Realm, tap the screen to make character jump and rise. The goal is to navigate the character through gaps between enemies without hitting them. 
-       The game's difficulty increases as you progress, with enemies becoming more closely spaced. Timing your taps is crucial to avoid crashing into the obstacles or the ground. 
-       Keep an eye on the characters altitude and adjust your tapping rhythm to guide it through the map and achieve a high score. Make sure to notice your energy bar on the left side of
-      the screen. Use the 'shift' button to dash your character forward to help avoid oncoming enemies!</p>
+  <div class="game-description">
+    <h2>Description</h2>
+    <p>Endure The Lost Realm is a thrilling, endless-flying adventure that takes inspiration from the classic game Flappy Bird. 
+       Players guide a charming, pixelated character through a series of challenging obstacles in a vibrant, ever-changing sky. 
+       With simple yet addictive gameplay, the objective is to navigate between the moving obstacles, earn high scores, and unlock new characters.
+       Endure The Lost Realm combines fast-paced action with delightful visuals, offering endless fun and competition for players of all ages.</p>
 
-      <!-- Return Button with an onclick event -->
+ 
+
+  <div class="how-to-play">
+      <h2>How To Play</h2>
+      <p>Welcome to <strong>Endure The Lost Realm</strong>! Here's a quick guide to get you started:</p>
+  
+      <div class="content-wrapper">
+        <ul class="instruction-list">
+            <li><strong>Tap the Screen:</strong> Tap anywhere on the screen using your mouse click to make your character jump and hold click to rise.</li>
+            <li><strong>Avoid Enemies:</strong> Navigate your character through gaps between enemies. Avoid hitting them to stay in the game.</li>
+            <li><strong>Increasing Difficulty:</strong> As you progress, the enemies will become more closely spaced, making the game more challenging.</li>
+            <li><strong>Timing is Key:</strong> Pay close attention to your character's altitude and adjust your tapping rhythm to guide it through the map effectively.</li>
+            <li><strong>Energy Bar:</strong> Monitor the energy bar on the left side of the screen. This indicates your character's remaining energy and can be crucial for survival.</li>
+            <li><strong>Dash Forward:</strong> Use the <strong>'Shift'</strong> button to dash your character forward using energy. This can help you avoid oncoming enemies and navigate tight spaces.</li>
+        </ul>
+    </div>
+  
+      <p>Master these controls and aim for the highest score! Good luck!</p>
+  </div>
+
       <button class="return-button" onclick="returnToGame()">PLAY</button>
 
-      <!-- JavaScript function to handle the redirect -->
+      
       <script>
           function returnToGame() {
-              // Replace 'index.html' with the URL or path of your homepage
               window.location.href = 'index.html';
           }
       </script>
+
+<div class="image-container">
+  <img src="./sprites/SlimeOrange/SlimeOrange_00000.png" alt="Plant enemy" class="wizard-item">
+  <img src="./sprites/BlueWizard/2BlueWizardIdle/Chara - BlueIdle00000.png" alt="Blue Wizard" class="wizard-item">
+  <img src="./sprites/SlimeGreen/SlimeBasic_00000.png" alt="green slime" class="wizard-item">
+</div>
+
 </body>
 </html>
