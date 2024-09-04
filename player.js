@@ -1,7 +1,7 @@
 class Player{
   constructor(game){
     this.game= game;
-    this.x= 20;
+    this.x= 5;
     this.y;
     this.spriteWidth= 200;
     this.spriteHeight= 200;
@@ -19,10 +19,16 @@ class Player{
     this.barSize;
     this.charging;
     this.image= document.getElementById('Morgana');
-    
+    this.hitBoxStartX= this.x;
+    this.hitBoxStartY= this.y;
+    this.hitBoxX= this.spriteWidth;
+    this.hitBoxY= this.spriteHeight;
+
   }
+
+
   draw(){
-    // this.game.ctx.strokeRect(this.x, this.y, this.width, this.height);
+    this.game.ctx.strokeRect(this.x, this.y, this.spriteWidth, this.spriteHeight);
     this.game.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     // this.game.ctx.beginPath();
     // this.game.ctx.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI*2);
@@ -34,7 +40,7 @@ class Player{
   update(){
     this.handleEnergy();
     this.y+= this.speedY;
-    this.collisionY= this.y+ this.height*0.5;
+    this.collisionY= this.y+ this.height;
     if(!this.isTouchingBottom() && !this.charging){
       this.speedY += this.game.gravity;
     }else {
@@ -52,8 +58,8 @@ class Player{
     this.y= this.game.height * 0.5 - this.height * 0.5;
     this.speedY= -8 * this.game.ratio;
     this.levitateSpeed= 8 * this.game.ratio;
-    this.collisionRadius= this.width * 0.5;
-    this.collisionX= this.x+  this.width*0.5;
+    this.collisionRadius= this.width ;
+    this.collisionX= this.x+  this.width * .05;
     this.collided= false;
     this.barSize= Math.floor(5* this.game.ratio);
 

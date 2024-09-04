@@ -16,6 +16,7 @@ class Game {
     this.minSpeed;
     this.maxSpeed;
     this.score;
+    this.gameOver= false;
     this.gameOver;
     this.timer;
     this.message1;
@@ -40,6 +41,7 @@ class Game {
     window.addEventListener('keydown', e=> {
       if (e.key === ' ' || e.key ==='ArrowUp'); this.player.levitate();
       if (e.key === 'Shift' || e.key.toLowerCase() === 'c') this.player.startCharge();
+      if (e.key === 'r' || e.key === 'R') this.restart();
     });
 
     this.canvas.addEventListener('touchstart', e=> {
@@ -153,7 +155,13 @@ class Game {
     }
     this.ctx.restore();
   }
-    
+  
+  restart (){
+    if (this.gameOver) {
+      this.resize(window.innerWidth, window.innerHeight);
+      this.gameOver= false;
+    }
+  }
 }
 
 window.addEventListener('load', function(){
