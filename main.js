@@ -10,14 +10,13 @@ class Game {
     this.background= new Background(this);
     this.player= new Player(this);
     this.obstacles= [];
-    this.numberOfObstacles= 20;
+    this.numberOfObstacles= 10;
     this.gravity;
     this.speed;
     this.minSpeed;
     this.maxSpeed;
     this.score;
     this.gameOver= false;
-    this.gameOver;
     this.timer;
     this.message1;
     this.message2;
@@ -163,6 +162,9 @@ class Game {
     }
   }
 }
+
+
+
 
 window.addEventListener('load', function(){
   const canvas= document.getElementById('canvas1');

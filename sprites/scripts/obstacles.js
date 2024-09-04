@@ -38,14 +38,15 @@ class Obstacle{
       this.game.gameOver= true;
       this.game.player.collided= true;
       this.game.player.stopCharge();
+      // console.log(this, this.game.player)
     }
   }
   draw(){
     this.game.ctx.drawImage(this.image, this.x, this.y, this.spriteWidth, this.spriteHeight);
-    // this.game.ctx.fillRect(this.x, this.y, this.scaledWidth, this.scaledHeight);
+    // this.game.ctx.strokeRect(this.x, this.y, this.scaledWidth, this.scaledHeight);
     // this.game.ctx.beginPath();
     // this.game.ctx.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI*2);
-    // this.game.ctx.stroke()
+    
   }
   resize(){
     this.scaledWidth= this.spriteWidth * this.game.ratio;
